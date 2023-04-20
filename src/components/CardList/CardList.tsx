@@ -1,61 +1,34 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Container, Button, Stack, CircularProgress, Checkbox } from '@mui/material';
+import React, { useContext, useMemo } from 'react';
+import { Stack, Checkbox } from '@mui/material';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import { styled } from '@mui/material/styles';
 
 import { CardItem } from './CardItem/CardItem';
-import { ProductModel } from '../../models/ProductModel';
-import { fetchProductData } from '../../services/apiService';
 import { ProductItemModel } from '../../models/ProductItemModel';
+import { AppContext } from '../../context/AppContext';
+import { CardItemSkeleton } from './CardItem/CardItemSkeleton';
+import { StyledContainer } from '../../styles/CardListStyles';
 
-const StyledRadio = styled(Checkbox)({
+type CardListProps = {
+    products: ProductItemModel[];
+};
 
-});
+export const CardList: React.FC<CardListProps> = ({ products }) => {
+    const { state } = useContext(AppContext);
 
+    const isLoading = state.isLoading;
 
-export const CardList: React.FC = () => {
-
-    const [data, setData] = useState<ProductModel>();
-    const [products, setProducts] = useState<ProductItemModel[]>([]);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [visible, setVisible] = useState(true);
-    const [page, setPage] = useState(1);
-
-    const fetchProduct = useCallback(async () => {
-        const result = await (fetchProductData(page)) as ProductModel;
-        setData(result);
-        setProducts([...products, ...result.items]);
-        setIsLoaded(true);
-    }, [page]);
-
-    const fetchNewProduct = () => {
-        page <= data!.pages ? setPage(page + 1) : setVisible(true);
-        setIsLoaded(false);
-    };
-
-    useEffect(() => {
-        fetchProduct();
-    }, [fetchProduct]);
-
-    const CardList = useMemo(() => products.map(product => <CardItem key={product.id} data={product} isLoaded />), [products]);
+    const CardList = useMemo(() => products.map(product => <CardItem key={product.id} data={product} />), [products]);
+    const CardListSkeleton = useMemo(() => [...Array(20)].map(() => <CardItemSkeleton />), []);
 
     return (
         <>
             <Stack>
-                <StyledRadio icon={<GridViewOutlinedIcon />} checkedIcon={<GridViewOutlinedIcon color='secondary' />} />
+                <Checkbox icon={<GridViewOutlinedIcon />} checkedIcon={<GridViewOutlinedIcon color='secondary' />} />
             </Stack>
-            <Container sx={{ display: 'flex', flexWrap: 'wrap', gap: '30px 30px', justifyContent: 'center', mt: 2, mb: 2 }}>
+            <StyledContainer>
                 {CardList}
-            </Container>
-            <Stack sx={{ width: '100%' }} alignItems='center'>
-                {isLoaded ?
-                    <Button sx={{ width: 125, mt: 2, mb: 2, fontSize: 13, color: '#00A0AB', visibility: visible ? 'initial' : 'hidden' }} onClick={fetchNewProduct}>Показать еще</Button>
-                    :
-                    <CircularProgress />
-                }
-
-            </Stack>
-
+                {isLoading && products.length === 0 && CardListSkeleton}
+            </StyledContainer>
         </>
     );
 };
