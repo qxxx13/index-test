@@ -11,23 +11,27 @@ export const AddToFavorite = styled(Rating)({
 });
 
 export const StyledCard = styled(Card)({
+    display: "flex",
+    flexDirection: "column",
     width: 224,
     borderRadius: 12
+});
+
+export const StyledCardMedia = styled(CardMedia)({
+    height: 260,
+    backgroundColor: "gray"
 });
 
 export const StyledBox = styled(Box)({
     position: "absolute",
     top: 16,
-    left: "30%",
+    left: 0,
+    right: 0,
+    margin: "0 auto",
     backgroundColor: "white",
     borderRadius: 12,
     width: "fit-content",
     padding: "5px 8px 5px 8px"
-});
-
-export const StyledCardMedia = styled(CardMedia)({
-    height: 300,
-    backgroundColor: "gray"
 });
 
 export const StyledStack = styled(Stack)({

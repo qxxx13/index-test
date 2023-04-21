@@ -9,6 +9,9 @@ export const AppReducer = (state: AppContextType, action: Action): AppContextTyp
         case ActionType.SET_IS_LOADING: {
             return { ...state, isLoading: action.payload };
         }
+        case ActionType.SET_GRID_VIEW: {
+            return { ...state, gridView: action.payload };
+        }
         default:
             throw new Error("");
     }
