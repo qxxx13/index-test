@@ -6,6 +6,7 @@ import useProductApi from '../../hooks/useProductApi';
 import { ButtonMore, PreloaderBox, StyledPreloaderDeterminate, StyledPreloaderIndeterminate, StyledStack } from '../../styles/MainPageStyles';
 import { GoUpButton } from './GoUoButton/GoUpButton';
 import { DirectionButtons } from './DirectionButtons/DirectionButtons';
+import { Swiper } from '../CardList/CardItem/Swiper/Swiper';
 
 export const MainPage: React.FC = () => {
     const { state } = useContext(AppContext);

@@ -5,6 +5,7 @@ import { CardContent, CardActionArea, Stack } from '@mui/material';
 import { ProductItemModel } from '../../../models/ProductItemModel';
 import { AppContext } from '../../../context/AppContext';
 import { AddToFavorite, StyledBox, StyledCard, StyledCardMedia, StyledStack, TypographyAddress, TypographyPrice, TypographyTitle } from '../../../styles/CardItemStyles';
+import { Swiper } from './Swiper/Swiper';
 
 type CardItemProps = {
     data: ProductItemModel;
@@ -17,6 +18,7 @@ export const CardItem: React.FC<CardItemProps> = ({ data }) => {
         <StyledCard elevation={2} sx={{ flexDirection: state.gridView ? 'column' : 'row', width: state.gridView ? 224 : 450 }}>
             <CardActionArea disabled={!isLoading ? false : true} sx={{ width: state.gridView ? 'auto' : 156 }}>
                 <StyledCardMedia sx={{ height: state.gridView ? 260 : 134, width: state.gridView ? 'auto' : 156 }}>
+                    <Swiper />
                     {data.seen &&
                         <StyledBox>Просмотрено</StyledBox>
                     }

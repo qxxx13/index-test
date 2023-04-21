@@ -18,8 +18,7 @@ export const StyledCard = styled(Card)({
 });
 
 export const StyledCardMedia = styled(CardMedia)({
-    height: 260,
-    backgroundColor: "gray"
+    height: 260
 });
 
 export const StyledBox = styled(Box)({
