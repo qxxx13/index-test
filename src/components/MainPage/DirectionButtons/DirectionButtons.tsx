@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { GridIcon, GridIconFilled, HorizontalIcon, HorizontalIconFilled, StyledCheckbox, StyledStack } from '../../../styles/DirectionButtonsStyles';
 import { AppContext } from '../../../context/AppContext';
 import { ActionType } from '../../../context/Actions';
@@ -9,6 +9,10 @@ export const DirectionButtons: React.FC = () => {
     const changeDirection = useCallback(() => {
         dispatch({ type: ActionType.SET_GRID_VIEW, payload: !state.gridView });
     }, [dispatch, state.gridView]);
+
+    useEffect(() => {
+        localStorage.setItem('GridView', state.gridView as unknown as string);
+    }, [state.gridView]);
 
     return (
         <StyledStack>

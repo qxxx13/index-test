@@ -3,7 +3,8 @@ import { ProductItemModel } from "../models/ProductItemModel";
 export const DefaultContextValue = {
     isLoading: true,
     productItems: [] as ProductItemModel[],
-    gridView: true
+    gridView: JSON.parse(localStorage.getItem("GridView") || "true"),
+    error: ""
 };
 
 export type AppContextType = typeof DefaultContextValue;

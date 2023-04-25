@@ -1,18 +1,18 @@
 export const images = [
     {
         label: 1,
-        imgPath: "https://picsum.photos/200/300?random"
+        imgPath: "https://picsum.photos/224/255?random"
     },
     {
         label: 2,
-        imgPath: "https://picsum.photos/201/301?random"
+        imgPath: "https://picsum.photos/224/256?random"
     },
     {
         label: 3,
-        imgPath: "https://picsum.photos/202/302?random"
+        imgPath: "https://picsum.photos/224/257?random"
     },
     {
         label: 4,
-        imgPath: "https://picsum.photos/203/303?random"
+        imgPath: "https://picsum.photos/224/258?random"
     }
 ];

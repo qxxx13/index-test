@@ -4,7 +4,7 @@ import { CardItem } from './CardItem/CardItem';
 import { ProductItemModel } from '../../models/ProductItemModel';
 import { AppContext } from '../../context/AppContext';
 import { CardItemSkeleton } from './CardItem/CardItemSkeleton';
-import { StyledContainer } from '../../styles/CardListStyles';
+import { CardListContainer } from '../../styles/CardListStyles';
 
 type CardListProps = {
     products: ProductItemModel[];
@@ -18,9 +18,9 @@ export const CardList: React.FC<CardListProps> = ({ products }) => {
     const CardListSkeleton = useMemo(() => [...Array(20)].map(() => <CardItemSkeleton />), []);
 
     return (
-        <StyledContainer>
+        <CardListContainer>
             {CardList}
             {isLoading && products.length === 0 && CardListSkeleton}
-        </StyledContainer>
+        </CardListContainer>
     );
 };

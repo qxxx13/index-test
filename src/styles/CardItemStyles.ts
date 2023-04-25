@@ -1,11 +1,14 @@
 import { styled } from "@mui/material/styles";
-import { Card, CardMedia, Rating, Box, Stack, Typography } from "@mui/material";
+import { Card, CardMedia, Box, Stack, Typography, Checkbox } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export const AddToFavorite = styled(Rating)({
-    "& .MuiRating-iconFilled": {
-        color: "#00A0AB"
-    },
-    "& .MuiRating-iconHover": {
+export const AddToFavorite = styled(Checkbox)({
+    padding: 0
+});
+
+export const StyledFavoriteIcon = styled(FavoriteIcon)({
+    color: "#C7C7C7",
+    "&:hover": {
         color: "#A4A4A4"
     }
 });
@@ -21,7 +24,7 @@ export const StyledCardMedia = styled(CardMedia)({
     height: 260
 });
 
-export const StyledBox = styled(Box)({
+export const SeenDiv = styled(Box)({
     position: "absolute",
     top: 16,
     left: 0,
@@ -31,12 +34,6 @@ export const StyledBox = styled(Box)({
     borderRadius: 12,
     width: "fit-content",
     padding: "5px 8px 5px 8px"
-});
-
-export const StyledStack = styled(Stack)({
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
 });
 
 export const TypographyTitle = styled(Typography)({

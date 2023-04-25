@@ -6,10 +6,11 @@ import useProductApi from '../../hooks/useProductApi';
 import { ButtonMore, PreloaderBox, StyledPreloaderDeterminate, StyledPreloaderIndeterminate, StyledStack } from '../../styles/MainPageStyles';
 import { GoUpButton } from './GoUoButton/GoUpButton';
 import { DirectionButtons } from './DirectionButtons/DirectionButtons';
-import { Swiper } from '../CardList/CardItem/Swiper/Swiper';
+import { Box, Stack, Typography } from '@mui/material';
 
 export const MainPage: React.FC = () => {
     const { state } = useContext(AppContext);
+
     const isLoading = state.isLoading;
 
     const [page, setPage] = useState(1);
@@ -30,7 +31,7 @@ export const MainPage: React.FC = () => {
             <DirectionButtons />
             <CardList products={state.productItems} />
             <StyledStack>
-                {isLoading ?
+                {isLoading &&
                     <PreloaderBox>
                         <StyledPreloaderDeterminate
                             variant="determinate"
@@ -45,9 +46,13 @@ export const MainPage: React.FC = () => {
                             thickness={4}
                         />
                     </PreloaderBox>
-
+                }
+                {!isLoading && state.error !== 'error' ? <ButtonMore onClick={fetchNewProduct} sx={{ display: showButton ? 'flex' : 'none' }}>Показать еще</ButtonMore>
                     :
-                    <ButtonMore onClick={fetchNewProduct} sx={{ display: showButton ? 'flex' : 'none' }}>Показать еще</ButtonMore>
+                    <Stack sx={{ m: '38px 0 38px 0' }} alignItems='center'>
+                        <Typography variant='body2'>Ошибка при загрузке</Typography>
+                        <ButtonMore onClick={fetchNewProduct} sx={{ display: showButton ? 'flex' : 'none', width: 160, margin: 0 }}>Повторить попытку</ButtonMore>
+                    </Stack>
                 }
             </StyledStack>
             <GoUpButton />
