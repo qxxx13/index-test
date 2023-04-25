@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { CardContent, CardActionArea, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import { ProductItemModel } from '../../../models/ProductItemModel';
 import { AppContext } from '../../../context/AppContext';
-import { AddToFavorite, SeenDiv, StyledCard, StyledCardMedia, StyledFavoriteIcon, TypographyAddress, TypographyPrice, TypographyTitle } from '../../../styles/CardItemStyles';
+import { AddToFavorite, StyledCard, StyledCardActionArea, StyledCardContent, StyledCardMedia, StyledFavoriteIcon, TypographyPrice, TypographyTitle } from '../../../styles/CardItemStyles';
 import { Swiper } from './Swiper/Swiper';
 import { StackRow } from '../../../styles/GlobalStyles';
 
@@ -16,16 +16,13 @@ export const CardItem: React.FC<CardItemProps> = ({ data }) => {
     const { state } = useContext(AppContext);
 
     return (
-        <StyledCard elevation={2} sx={{ flexDirection: state.gridView ? 'column' : 'row', width: state.gridView ? 224 : 450 }}>
-            <CardActionArea sx={{ width: state.gridView ? 'auto' : 156 }}>
-                <StyledCardMedia sx={{ height: state.gridView ? 260 : 134, width: state.gridView ? 'auto' : 156 }}>
-                    <Swiper />
-                    {data.seen &&
-                        <SeenDiv>Просмотрено</SeenDiv>
-                    }
+        <StyledCard gridView={state.gridView} elevation={2}>
+            <StyledCardActionArea gridView={state.gridView}>
+                <StyledCardMedia gridView={state.gridView}>
+                    <Swiper product={data}/>
                 </StyledCardMedia>
-            </CardActionArea>
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', width: state.gridView ? 'auto' : '100%', justifyContent: 'space-between' }}>
+            </StyledCardActionArea>
+            <StyledCardContent gridView={state.gridView}>
                 <Stack>
                     <StackRow>
                         <TypographyPrice>{data.price}</TypographyPrice>
@@ -37,12 +34,7 @@ export const CardItem: React.FC<CardItemProps> = ({ data }) => {
                     </StackRow>
                     <TypographyTitle>{data.title}</TypographyTitle>
                 </Stack>
-
-                <StackRow>
-                    <TypographyAddress>{data.address}</TypographyAddress>
-                    <TypographyAddress>321</TypographyAddress>
-                </StackRow>
-            </CardContent>
+            </StyledCardContent>
         </StyledCard>
     );
 };

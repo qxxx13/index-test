@@ -1,9 +1,12 @@
 export type ProductItemModel = {
-    id: number;
-    price: number;
-    about: string;
-    address: string;
-    seen: boolean;
-    title: string;
-    createdAt: string;
+    id: number,
+    title: string,
+    price: number,
+    description: string,
+    category: {
+    id: number,
+    name: string,
+    image: string
+    },
+    images: string[]
 };

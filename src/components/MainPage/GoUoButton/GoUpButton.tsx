@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import { StackButtonUp, UpButton } from '../../../styles/MainPageStyles';
+import { StackButtonUp, StyledButton } from '../../../styles/MainPageStyles';
 import { TypographyAddress } from '../../../styles/CardItemStyles';
 
 export const GoUpButton: React.FC = () => {
@@ -27,10 +27,10 @@ export const GoUpButton: React.FC = () => {
 
     return (
         <StackButtonUp>
-            <UpButton sx={{ visibility: showUp ? 'initial' : 'hidden' }} onClick={() => window.scrollTo({ top: 0 })}>
+            <StyledButton showUp={showUp} onClick={() => window.scrollTo({ top: 0 })}>
                 <KeyboardArrowUpIcon />
                 <TypographyAddress>Вверх</TypographyAddress>
-            </UpButton>
+            </StyledButton>
         </StackButtonUp>
     );
 };

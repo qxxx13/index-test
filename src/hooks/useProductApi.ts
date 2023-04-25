@@ -9,7 +9,7 @@ const useProductApi = (page: number) => {
     const updateProducts = useCallback(async () => {
         dispatch({ type: ActionType.SET_IS_LOADING, payload: true });
         fetchProductData(page)
-            .then((data) => dispatch({ type: ActionType.SET_PRODUCT_ITEMS, payload: data.items }))
+            .then((data) => dispatch({ type: ActionType.SET_PRODUCT_ITEMS, payload: data }))
             .catch(() => dispatch({ type: ActionType.SET_ERROR, payload: "Error" }))
             .finally(() => dispatch({ type: ActionType.SET_IS_LOADING, payload: false }));
     }, [dispatch, page]);
