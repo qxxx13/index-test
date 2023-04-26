@@ -27,7 +27,7 @@ export const GoUpButton: React.FC = () => {
 
     return (
         <StackButtonUp>
-            <StyledButton showUp={showUp} onClick={() => window.scrollTo({ top: 0 })}>
+            <StyledButton showup={showUp} onClick={() => window.scrollTo({ top: 0 })}>
                 <KeyboardArrowUpIcon />
                 <TypographyAddress>Вверх</TypographyAddress>
             </StyledButton>

@@ -3,7 +3,7 @@ import { Card, CardMedia, Box, Stack, Typography, Checkbox, CardActionArea, Card
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 type StyledCardProps = {
-    gridView: boolean;
+    gridview: boolean;
 }
 
 export const AddToFavorite = styled(Checkbox)({
@@ -19,24 +19,24 @@ export const StyledFavoriteIcon = styled(FavoriteIcon)({
 
 export const StyledCard = styled(Card)<StyledCardProps>((props) => ({
     display: "flex",
-    flexDirection: props.gridView ? 'column' : 'row',
-    width: props.gridView ? 224 : 450,
+    flexDirection: props.gridview ? 'column' : 'row',
+    width: props.gridview ? 224 : 450,
     borderRadius: 12
 }));
 
 export const StyledCardActionArea = styled(CardActionArea)<StyledCardProps>((props) => ({
-    width: props.gridView ? 'auto' : 156
+    width: props.gridview ? 'auto' : 156
 }))
 
 export const StyledCardMedia = styled(CardMedia)<StyledCardProps>((props) => ({
-    height: props.gridView ? 260 : 134,
-    width: props.gridView ? 'auto' : 156
+    height: props.gridview ? 260 : 134,
+    width: props.gridview ? 'auto' : 156
 }));
 
 export const StyledCardContent = styled(CardContent)<StyledCardProps>((props) => ({
     display: 'flex',
     flexDirection: 'column',
-    width: props.gridView ? 'auto' : '100%',
+    width: props.gridview ? 'auto' : '100%',
     justifyContent: 'space-between'
 }))
 

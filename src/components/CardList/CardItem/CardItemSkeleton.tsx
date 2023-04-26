@@ -8,15 +8,15 @@ export const CardItemSkeleton: React.FC = () => {
     const { state } = useContext(AppContext);
 
     return (
-        <StyledCard elevation={2} gridView={state.gridView}>
-            <StyledCardActionArea gridView={state.gridView} disabled>
-                <StyledCardMedia gridView={state.gridView}>
+        <StyledCard elevation={2} gridview={state.gridView}>
+            <StyledCardActionArea gridview={state.gridView} disabled>
+                <StyledCardMedia gridview={state.gridView}>
                     <Skeleton variant='rectangular' sx={{ height: state.gridView ? 260 : 134 }} />
                     <Box sx={{ bgcolor: 'white', borderRadius: '3px', width: 56, height: 8, position: 'absolute' }} />
                 </StyledCardMedia>
 
             </StyledCardActionArea>
-            <StyledCardContent gridView={state.gridView}>
+            <StyledCardContent gridview={state.gridView}>
                 <Stack>
                     <StackRow>
                         <Skeleton variant='rectangular' height={25} sx={{ borderRadius: '8px', width: state.gridView ? 166 : 235 }} />

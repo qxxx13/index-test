@@ -13,6 +13,8 @@ export const MainPage: React.FC = () => {
 
     const isLoading = state.isLoading;
 
+    const products = state.productItems;
+
     const [page, setPage] = useState(0);
     const [showButton, setShowButton] = useState(true);
 
@@ -29,7 +31,7 @@ export const MainPage: React.FC = () => {
     return (
         <>
             <DirectionButtons />
-            <CardList products={state.productItems} />
+            <CardList products={products} />
             <StyledStack>
                 {isLoading &&
                     <PreloaderBox>
@@ -47,11 +49,11 @@ export const MainPage: React.FC = () => {
                         />
                     </PreloaderBox>
                 }
-                {!isLoading && state.error !== 'error' && <ButtonMore showButton={showButton} onClick={fetchNewProduct}>Показать еще</ButtonMore>}
+                {!isLoading && state.error !== 'error' && <ButtonMore showbutton={showButton} onClick={fetchNewProduct}>Показать еще</ButtonMore>}
                 {!isLoading && state.error === 'error' &&
                     <Stack sx={{ m: '38px 0 38px 0' }} alignItems='center'>
                         <Typography variant='body2'>Ошибка при загрузке</Typography>
-                        <ButtonMore showButton={showButton} onClick={fetchNewProduct} isErrorButton={true}>Повторить попытку</ButtonMore>
+                        <ButtonMore showbutton={showButton} onClick={fetchNewProduct} iserrorbutton={true}>Повторить попытку</ButtonMore>
                     </Stack>
                 }
             </StyledStack>

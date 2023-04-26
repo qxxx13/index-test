@@ -16,13 +16,13 @@ export const CardItem: React.FC<CardItemProps> = ({ data }) => {
     const { state } = useContext(AppContext);
 
     return (
-        <StyledCard gridView={state.gridView} elevation={2}>
-            <StyledCardActionArea gridView={state.gridView}>
-                <StyledCardMedia gridView={state.gridView}>
+        <StyledCard gridview={state.gridView} elevation={2}>
+            <StyledCardActionArea gridview={state.gridView}>
+                <StyledCardMedia gridview={state.gridView}>
                     <Swiper product={data}/>
                 </StyledCardMedia>
             </StyledCardActionArea>
-            <StyledCardContent gridView={state.gridView}>
+            <StyledCardContent gridview={state.gridView}>
                 <Stack>
                     <StackRow>
                         <TypographyPrice>{data.price}</TypographyPrice>
