@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Stack } from '@mui/material';
+import { Link } from "react-router-dom";
 
 import { ProductItemModel } from '../../../models/ProductItemModel';
 import { AppContext } from '../../../context/AppContext';
@@ -32,7 +33,7 @@ export const CardItem: React.FC<CardItemProps> = ({ data }) => {
                             checkedIcon={<FavoriteIcon sx={{ color: '#00A0AB' }} />}
                         />
                     </StackRow>
-                    <TypographyTitle>{data.title}</TypographyTitle>
+                    <Link to={`/product/${data.id}`} style={{textDecoration: 'none', color: '#00A0AB'}}><TypographyTitle>{data.title}</TypographyTitle></Link>
                 </Stack>
             </StyledCardContent>
         </StyledCard>

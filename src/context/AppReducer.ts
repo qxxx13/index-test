@@ -22,6 +22,9 @@ export const AppReducer = ( state: AppContextType,action: Action ): AppContextTy
             ]);
             return { ...state, productItems: products };
         }
+        case ActionType.SET_CURRENT_PRODUCT: {
+            return {...state, currentProduct: action.payload}
+        }
         case ActionType.SET_IS_LOADING: {
             return { ...state, isLoading: action.payload };
         }

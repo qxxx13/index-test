@@ -6,3 +6,8 @@ export const fetchProductData = (page_count: number) => {
         .then((res) => res.data);
     return productData;
 };
+
+export const fetchProductById = (id: string | undefined) => {
+    const productById = axios.get(`https://api.escuelajs.co/api/v1/products/${id}`).then(res => res.data)
+    return productById;
+}

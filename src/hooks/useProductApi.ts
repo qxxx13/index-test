@@ -7,6 +7,11 @@ import { ProductItemModel } from "../models/ProductItemModel";
 const useProductApi = (page: number) => {
     const { dispatch } = useContext(AppContext);
 
+    const getCurrentProduct = (products: ProductItemModel[]) => {
+        const currentProduct = products.find((product) => product.id === page);
+        return currentProduct;
+    };
+
     const updateProducts = useCallback(async () => {
         dispatch({ type: ActionType.SET_IS_LOADING, payload: true });
         fetchProductData(page)
@@ -16,15 +21,30 @@ const useProductApi = (page: number) => {
                     payload: products,
                 })
             )
-            .catch(() =>
-                dispatch({ type: ActionType.SET_ERROR, payload: "Error" })
-            )
-            .finally(() =>
-                dispatch({ type: ActionType.SET_IS_LOADING, payload: false })
-            );
+            .catch(() => dispatch({ type: ActionType.SET_ERROR, payload: "error" }))
+            .finally(() => dispatch({ type: ActionType.SET_IS_LOADING, payload: false }));
     }, [dispatch, page]);
 
-    return { updateProducts };
+    const updateCurrentProduct = useCallback(() => {
+        dispatch({ type: ActionType.SET_IS_LOADING, payload: true });
+
+        const currentPage = Math.trunc(page / 10) - 2;
+
+        console.log(currentPage);
+
+        fetchProductData(currentPage)
+            .then((products) => {
+                const currentProduct = getCurrentProduct(products);
+                dispatch({
+                    type: ActionType.SET_CURRENT_PRODUCT,
+                    payload: currentProduct,
+                });
+            })
+            .catch(() => dispatch({ type: ActionType.SET_ERROR, payload: "error" }))
+            .finally(() => dispatch({ type: ActionType.SET_IS_LOADING, payload: false }));
+    }, [dispatch, page]);
+
+    return { updateProducts, updateCurrentProduct };
 };
 
 export default useProductApi;

@@ -6,6 +6,7 @@ import { AppContextType, DefaultContextValue } from './context/DefaultContextVal
 import { Action } from './context/Actions';
 import { AppReducer } from './context/AppReducer';
 import { AppContext } from './context/AppContext';
+import { Router } from './router/Router';
 
 export const App = () => {
 
@@ -18,7 +19,7 @@ export const App = () => {
 
     return (
         <AppContext.Provider value={ContextState}>
-            <MainPage />
+            <Router />
         </AppContext.Provider>
     );
 };
