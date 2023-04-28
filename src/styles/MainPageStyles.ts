@@ -2,37 +2,38 @@ import { styled } from "@mui/material/styles";
 import { Box, Button, CircularProgress, Stack, IconButton } from "@mui/material";
 
 type ButtonMoreProps = {
-    showbutton: boolean,
-    iserrorbutton?: boolean
-}
+    showbutton: boolean;
+    iserrorbutton?: boolean;
+};
 
 type StyledButtonProps = {
-    showup: boolean
-}
+    showup: boolean;
+};
 
 export const ButtonMore = styled(Button)<ButtonMoreProps>((props) => ({
     width: props.iserrorbutton ? 160 : 125,
     margin: !props.iserrorbutton ? "24px 0 24px 0" : 0,
+    fontFamily: "Ubuntu sans-serif",
     fontSize: 13,
     color: "#00A0AB",
     borderRadius: 25,
     textTransform: "none",
     fontWeight: 600,
-    display: props.showbutton ? 'flex' : 'none'
+    display: props.showbutton ? "flex" : "none",
 }));
 
 export const StyledStack = styled(Stack)({
-    alignItems: "center"
+    alignItems: "center",
 });
 
 export const PreloaderBox = styled(Box)({
     display: "flex",
     flexDirection: "column",
-    margin: "16px 0 16px 0"
+    margin: "16px 0 16px 0",
 });
 
 export const StyledPreloaderDeterminate = styled(CircularProgress)({
-    color: "#ABCFD0"
+    color: "#ABCFD0",
 });
 
 export const StyledPreloaderIndeterminate = styled(CircularProgress)({
@@ -40,11 +41,11 @@ export const StyledPreloaderIndeterminate = styled(CircularProgress)({
     animationDuration: "550ms",
     position: "absolute",
     "& .circularProgressClasses.circle": {
-        strokeLinecap: "round"
-    }
+        strokeLinecap: "round",
+    },
 });
 
-export const StyledButton = styled(IconButton)<StyledButtonProps>(({showup}) => ({
+export const StyledButton = styled(IconButton)<StyledButtonProps>(({ showup }) => ({
     position: "fixed",
     bottom: 63,
     backgroundColor: "white",
@@ -54,14 +55,14 @@ export const StyledButton = styled(IconButton)<StyledButtonProps>(({showup}) => 
     height: 50,
     justifyContent: "space-around",
     padding: 16,
-    visibility: `${showup ? 'initial' : 'hidden'}`,
+    visibility: `${showup ? "initial" : "hidden"}`,
     "&:hover": {
-        backgroundColor: "white"
-    }
+        backgroundColor: "white",
+    },
 }));
 
 export const StackButtonUp = styled(Stack)({
     flexDirection: "row",
     marginRight: 25,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
 });

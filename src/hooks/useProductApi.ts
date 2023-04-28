@@ -30,8 +30,6 @@ const useProductApi = (page: number) => {
 
         const currentPage = Math.trunc(page / 10) - 2;
 
-        console.log(currentPage);
-
         fetchProductData(currentPage)
             .then((products) => {
                 const currentProduct = getCurrentProduct(products);

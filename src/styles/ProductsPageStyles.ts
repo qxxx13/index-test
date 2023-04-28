@@ -16,6 +16,7 @@ export const ProductPagePaper = styled(Paper)<ProductPagePaperProps>(({ isDeskto
 }));
 
 export const ProductPageBox = styled(Box)({
+    minWidth: 300,
     maxWidth: 400,
     height: 255,
     position: "relative",

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import { useParams } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -12,6 +12,7 @@ import {
     ProductPagePaper,
     ProductPageStack,
 } from "../../styles/ProductsPageStyles";
+import { StyledTypography } from "../../styles/GlobalStyles";
 
 export const ProductPage: React.FC = () => {
     const { id } = useParams();
@@ -35,9 +36,9 @@ export const ProductPage: React.FC = () => {
                         <Swiper product={currentProduct} />
                     </ProductPageBox>
                     <ProductPageStack>
-                        <Typography variant="h3">{currentProduct.title}</Typography>
-                        <Typography variant="h5">{currentProduct.price}$</Typography>
-                        <Typography variant="body1">{currentProduct.description}</Typography>
+                        <StyledTypography variant="h3">{currentProduct.title}</StyledTypography>
+                        <StyledTypography variant="h5">{currentProduct.price}$</StyledTypography>
+                        <StyledTypography variant="body1">{currentProduct.description}</StyledTypography>
                     </ProductPageStack>
                 </ProductPagePaper>
             ) : (
